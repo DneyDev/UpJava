@@ -1,6 +1,6 @@
 public class Produto{
 
-    private String name;
+    final private String name;
     private double price;
     private int quantidadeEstoque;
 
@@ -10,15 +10,16 @@ public class Produto{
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public void venderUnidade(){ //método de comportamento da classe Produto
-        if(quantidadeEstoque <= 0){
-            throw new IllegalArgumentException("Produto sem estoque");
-        } quantidadeEstoque--;
+    public boolean venderUnidade(){ //método de comportamento da classe Produto
+        if (quantidadeEstoque > 0) {
+            quantidadeEstoque--;
+            return true;
+        } return false;
     }
     public void exibirInfo(){ //método de informações do produto
-        System.out.println("Product: "+ name);
+        System.out.println("\nProduct: "+ name);
         System.out.printf("Price: %.2f", price);
-        System.out.printf("Estoque atual: %d", quantidadeEstoque);
+        System.out.printf("\nEstoque atual: %d", quantidadeEstoque);
     }
 
     public String getName() { //getter construído com o nome do parâmetro;
@@ -40,7 +41,7 @@ public class Produto{
     }
     public void setQuantidadeEstoque(int quantidadeEstoque) {
 
-        if(quantidadeEstoque <= 0){
+        if(quantidadeEstoque < 0){
            throw new IllegalArgumentException("Quantidade deve ser maior!!");
         } this.quantidadeEstoque = quantidadeEstoque;
     }
