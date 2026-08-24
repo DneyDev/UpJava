@@ -1,15 +1,21 @@
 public class Main {
     public static void main(String[] args) {
-        //Exercício para treinamento de implementar classe Produto com construtor, this e setters validados
-        Cliente cliente = new Cliente("Sidney", "000.000.000-00");
-        Pedido pedido = new Pedido(cliente);
+        Gerente gerente = new Gerente("Sidney", 6000.0, 1500.0);
 
-        Produto teclado = new Produto("Teclado Mecânico", 250.0, 2);
-        Produto mouse = new Produto("Mouse Gamer", 120.0, 0); // sem estoque de propósito
+        Funcionario dev1 = new Funcionario("Ana", "Desenvolvedora", 4000.0);
+        Funcionario dev2 = new Funcionario("Pedro", "Desenvolvedor", 4200.0);
 
-        pedido.adicionarItem(teclado);
-        pedido.adicionarItem(mouse); // deve avisar que está sem estoque
+        gerente.adicionarMembro(dev1);
+        gerente.adicionarMembro(dev2);
 
-        pedido.exibirResumo();
+        gerente.exibirInfo();
+
+        /*
+        O que esse exercício testa:
+
+        extends + super(...) — o construtor da subclasse é obrigado a chamar (explícita ou implicitamente) um construtor da superclasse, e super(...) também só pode ser a primeira linha, igual o this(...) que você já viu.
+        A diferença entre composição (o que você fez em Pedido, que tem um Cliente) e herança (Gerente é um Funcionario) — repare que equipe dentro de Gerente é composição, mas a relação Gerente/Funcionario é herança. As duas convivem na mesma classe.
+        @Override + super.metodo() — sobrescrever sem jogar fora o comportamento original.
+        */
     }
 }
