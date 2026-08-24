@@ -1,12 +1,15 @@
 public class Main {
     public static void main(String[] args) {
         //Exercício para treinamento de implementar classe Produto com construtor, this e setters validados
-        Funcionario f1 = new Funcionario("Sidney", "Desenvolvedor Java", 4500.0);
-        Funcionario f2 = new Funcionario("Daniel", "Estagiário de Desenvolvimento");
-        Funcionario f3 = new Funcionario("Pedro");
+        Cliente cliente = new Cliente("Sidney", "000.000.000-00");
+        Pedido pedido = new Pedido(cliente);
 
-        f1.exibirInfo();
-        f2.exibirInfo();
-        f3.exibirInfo();
+        Produto teclado = new Produto("Teclado Mecânico", 250.0, 2);
+        Produto mouse = new Produto("Mouse Gamer", 120.0, 0); // sem estoque de propósito
+
+        pedido.adicionarItem(teclado);
+        pedido.adicionarItem(mouse); // deve avisar que está sem estoque
+
+        pedido.exibirResumo();
     }
 }
