@@ -1,14 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        Gerente gerente = new Gerente("Sidney", 6000.0, 1500.0);
+        List<Funcionario> equipe = new ArrayList<>();
 
-        Funcionario dev1 = new Funcionario("Ana", "Desenvolvedora", 4000.0);
-        Funcionario dev2 = new Funcionario("Pedro", "Desenvolvedor", 4200.0);
+        equipe.add(new Funcionario("Carlos", "Analista", 3500.0));
+        equipe.add(new Gerente("Sidney", 6000.0, 1500.0));
+        equipe.add(new Estagiario("Julia", 300.0));
 
-        gerente.adicionarMembro(dev1);
-        gerente.adicionarMembro(dev2);
-
-        gerente.exibirInfo();
+        for (Funcionario f : equipe) {
+            double folha = calcularFolhaPagamento(equipe);
+            f.exibirInfo();
+            System.out.println("---");
+            System.out.printf("Folha de pagamento: %.2f%n", folha);
+        }
 
         /*
         O que esse exercício testa:

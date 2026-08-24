@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Funcionario{
     
     private String name;
@@ -40,5 +42,15 @@ public class Funcionario{
         System.out.printf("\nNome: %s", name);
         System.out.printf("\nCargo: %s", cargo);
         System.out.printf("\nSalary: %.2f \n", salary);
+    }
+
+    public static double calcularFolhaPagamento(List<Funcionario>equipe){//folha de pagamento com laço for
+        double total = 0;
+        for (Funcionario f : equipe){
+            if (f instanceof Gerente g){
+                total += g.calcularSalarioTotal();
+            } total +=f.getSalary();
+        }
+        return total;
     }
 }
