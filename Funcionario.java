@@ -1,6 +1,6 @@
 import java.util.List;
 
-public abstract class Funcionario {
+public abstract class Funcionario implements Pagavel {
     
     private final String name;
     private final String cargo;
@@ -23,6 +23,7 @@ public abstract class Funcionario {
         this.salary = salary;
     }
 
+    @Override
     public abstract double calcularSalarioTotal();
 
     public void exibirInfo() { 

@@ -1,4 +1,4 @@
-public class Gerente extends Funcionario {
+public class Gerente extends Funcionario implements Demissivel{
     
     private final double bonus;
 
@@ -10,6 +10,10 @@ public class Gerente extends Funcionario {
     @Override
     public double calcularSalarioTotal() {
         return getSalary() + bonus;
+    }
+    @Override
+    public void demitir(String motivo) {
+        System.out.println(getName() + " foi demitido. Motivo: " + motivo);
     }
     // Sobrescrevendo a exibição para incluir o bônus
     @Override
