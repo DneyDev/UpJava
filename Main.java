@@ -10,7 +10,7 @@ public class Main {
         equipe.add(new Estagiario("Julia", 300.0));
 
         for (Funcionario f : equipe) {
-            double folha = calcularFolhaPagamento(equipe);
+            double folha = Funcionario.calcularFolhaPagamento(equipe);
             f.exibirInfo();
             System.out.println("---");
             System.out.printf("Folha de pagamento: %.2f%n", folha);

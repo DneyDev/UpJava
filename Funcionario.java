@@ -47,6 +47,9 @@ public class Funcionario{
     public static double calcularFolhaPagamento(List<Funcionario>equipe){//folha de pagamento com laço for
         double total = 0;
         for (Funcionario f : equipe){
+            if (f == null) {
+                continue;
+            }
             if (f instanceof Gerente g){
                 total += g.calcularSalarioTotal();
             } total +=f.getSalary();
