@@ -2,7 +2,7 @@ public class Estagiario extends Funcionario {
     final private double auxilioTransporte;
 
     public Estagiario(String name, double auxilioTransporte){
-        super(name, "Estagiario", 1200); 
+        super(name, Cargo.ESTAGIARIO, 1200); 
         this.auxilioTransporte = auxilioTransporte; 
     }
     @Override

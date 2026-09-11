@@ -1,7 +1,7 @@
 public class Analista extends Funcionario {
 
     public Analista(String name, double salary) {
-        super(name, "Analista", salary);
+        super(name, Cargo.ANALISTA, salary);
     }
 
     @Override

@@ -3,17 +3,17 @@ import java.util.List;
 public abstract class Funcionario implements Pagavel {
     
     private final String name;
-    private final String cargo;
+    private final Cargo cargo;
     private double salary;
 
-    public Funcionario(String name, String cargo, double salary) {
+    public Funcionario(String name, Cargo cargo, double salary) {
         this.name = name;
         this.cargo = cargo;
         this.salary = salary; 
     }
 
     public String getName() { return name; }
-    public String getCargo() { return cargo; }
+    public Cargo getCargo() { return cargo; }
     public double getSalary() { return salary; }
 
     public void setSalary(double salary) {

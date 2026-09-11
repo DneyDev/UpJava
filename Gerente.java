@@ -4,7 +4,7 @@ public class Gerente extends Funcionario implements Demissivel{
 
     // Construtor: o "super" repassa os dados para a classe pai (Funcionario)
     public Gerente(String name, double salary, double bonus) {
-        super(name, "Gerente", salary); 
+        super(name, Cargo.GERENTE, salary); 
         this.bonus = bonus;
     }
     @Override
