@@ -1,58 +1,42 @@
 import java.util.List;
 
-public class Funcionario{
+public abstract class Funcionario {
     
-    private String name;
-    private String cargo;
+    private final String name;
+    private final String cargo;
     private double salary;
 
-    public Funcionario(String name, String cargo, double salary){ //definição de atributos do método
-        this.name = name; //remetendo as "var" aos métodos da classe Funcionário
+    public Funcionario(String name, String cargo, double salary) {
+        this.name = name;
         this.cargo = cargo;
         this.salary = salary; 
     }
-    public Funcionario(String name, String cargo){
-        this(name, cargo, 0.0); //delega pro construtor completo
-    }
-    public Funcionario(String name){
-        this(name, "nao definido"); //delegando para o construtor de 2 parâmetros
-    }
 
-    //criando os getters abaixo
-    public String getName() {
-        return name;
-    }
-    public String getCargo() {
-        return cargo;
-    }
-
-    public double getSalary() {
-        return salary;
-    }
-    //criando setter para o salário
+    public String getName() { return name; }
+    public String getCargo() { return cargo; }
+    public double getSalary() { return salary; }
 
     public void setSalary(double salary) {
-
         if(salary < 0){
             throw new IllegalArgumentException("Valor invalido!");
-        } this.salary = salary;
+        } 
+        this.salary = salary;
     }
 
-    public void exibirInfo(){ //método de informações do produto
+    public abstract double calcularSalarioTotal();
+
+    public void exibirInfo() { 
         System.out.printf("\nNome: %s", name);
         System.out.printf("\nCargo: %s", cargo);
-        System.out.printf("\nSalary: %.2f \n", salary);
+        System.out.printf("\nSalário Base: %.2f \n", salary);
     }
 
-    public static double calcularFolhaPagamento(List<Funcionario>equipe){//folha de pagamento com laço for
+    public static double calcularFolhaPagamento(List<Funcionario> equipe) {
         double total = 0;
-        for (Funcionario f : equipe){
-            if (f == null) {
-                continue;
+        for (Funcionario f : equipe) {
+            if (f != null) {
+                total += f.calcularSalarioTotal(); 
             }
-            if (f instanceof Gerente g){
-                total += g.calcularSalarioTotal();
-            } total +=f.getSalary();
         }
         return total;
     }

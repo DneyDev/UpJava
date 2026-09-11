@@ -1,30 +1,21 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Gerente extends Funcionario {
-    final private double bonus;
-    final private List<Funcionario>equipe;
+    
+    private final double bonus;
 
-    public Gerente(String name, double salary, double bonus){ //construtor de Gerente
-        super(name, "Gerente", salary); //o "super" refere-se a Father Class "Funcionario"
+    // Construtor: o "super" repassa os dados para a classe pai (Funcionario)
+    public Gerente(String name, double salary, double bonus) {
+        super(name, "Gerente", salary); 
         this.bonus = bonus;
-        this.equipe = new ArrayList<>();
     }
-
-    public void adicionarMembro(Funcionario funcionario){
-        equipe.add(funcionario);
-    }
-    public double calcularSalarioTotal(){
-        return getSalary()+ bonus;
-    }
-
     @Override
-
-    public void exibirInfo(){
-        super.exibirInfo();//usnado novamente Super para puxar método da classe-pai
-
-        System.out.println("Bônus: " + bonus);
-        System.out.println("Equipe: " + equipe.size() + " membro(s)");
-        System.out.printf("Salário total: %.2f%n", calcularSalarioTotal());
+    public double calcularSalarioTotal() {
+        return getSalary() + bonus;
+    }
+    // Sobrescrevendo a exibição para incluir o bônus
+    @Override
+    public void exibirInfo() {
+        super.exibirInfo(); // Chama o exibirInfo() da classe pai
+        System.out.printf("Bônus: %.2f \n", bonus);
+        System.out.printf("Salário Total: %.2f \n", calcularSalarioTotal());
     }
 }

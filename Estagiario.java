@@ -2,8 +2,12 @@ public class Estagiario extends Funcionario {
     final private double auxilioTransporte;
 
     public Estagiario(String name, double auxilioTransporte){
-        super(name, "Estagiario", 1200); //super(name, cargo: "use as aspas para chamar o parametro fixo", salary: *só digitar o número)
-        this.auxilioTransporte = auxilioTransporte; //sempre chamar com this no construtor quando criado dentro da classe
+        super(name, "Estagiario", 1200); 
+        this.auxilioTransporte = auxilioTransporte; 
+    }
+    @Override
+    public double calcularSalarioTotal() {
+        return getSalary() + auxilioTransporte;
     }
     @Override
     public void exibirInfo() {

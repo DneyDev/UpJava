@@ -5,23 +5,19 @@ public class Main {
     public static void main(String[] args) {
         List<Funcionario> equipe = new ArrayList<>();
 
-        equipe.add(new Funcionario("Carlos", "Analista", 3500.0));
+        // Agora usamos a classe concreta Analista no lugar do Funcionario abstrato
+        equipe.add(new Analista("Carlos", 3500.0));
         equipe.add(new Gerente("Sidney", 6000.0, 1500.0));
         equipe.add(new Estagiario("Julia", 300.0));
 
+        System.out.println("--- DADOS DA EQUIPE ---");
         for (Funcionario f : equipe) {
-            double folha = Funcionario.calcularFolhaPagamento(equipe);
             f.exibirInfo();
-            System.out.println("---");
-            System.out.printf("Folha de pagamento: %.2f%n", folha);
+            System.out.println("-----------------------");
         }
 
-        /*
-        O que esse exercício testa:
-
-        extends + super(...) — o construtor da subclasse é obrigado a chamar (explícita ou implicitamente) um construtor da superclasse, e super(...) também só pode ser a primeira linha, igual o this(...) que você já viu.
-        A diferença entre composição (o que você fez em Pedido, que tem um Cliente) e herança (Gerente é um Funcionario) — repare que equipe dentro de Gerente é composição, mas a relação Gerente/Funcionario é herança. As duas convivem na mesma classe.
-        @Override + super.metodo() — sobrescrever sem jogar fora o comportamento original.
-        */
+        // A folha de pagamento é calculada UMA única vez após exibir a equipe
+        double folha = Funcionario.calcularFolhaPagamento(equipe);
+        System.out.printf("\nCusto Total da Folha de pagamento: %.2f%n", folha);
     }
 }
